@@ -277,13 +277,13 @@ p {
     .nav-menu a {
         display: block;
         padding: 12px 14px;
-        color: var(--white);
+        color: var(--black);
         border-radius: 10px;
     }
 
     .nav-menu a:hover {
-        background:  var(--white);
-        color:  var(--golden);
+        background:  var(--primary);
+        color:  var(--white);
     }
 
     .nav-menu a::after {
@@ -300,6 +300,30 @@ p {
 
     .nav-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Empilha o conteúdo da seção 'sobre' em telas pequenas e mostra a imagem completa */
+    .sobre-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .sobre-image {
+        /* permite que a imagem defina sua própria altura e não seja cortada */
+        max-height: none;
+        height: auto;
+        overflow: visible;
+        display: block;
+    }
+
+    .sobre-image img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
     }
 }
 

@@ -1,4 +1,3 @@
-
 // Aguarda o DOM estar completamente carregado
 document.addEventListener('DOMContentLoaded', function() {
 

@@ -200,4 +200,60 @@ document.addEventListener('DOMContentLoaded', function() {
         window.dispatchEvent(new Event('scroll'));
     }, 100);
 
+    /* =====================================================
+       6. LINK WHATSAPP SEM MENSAGEM AUTOMÁTICA
+       =====================================================
+       Garante que os links do WhatsApp abram sem qualquer
+       mensagem ou texto pré-definido.
+    */
+
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+
+    whatsappLinks.forEach(link => {
+        const originalHref = link.getAttribute('href');
+
+        if (!originalHref) return;
+
+        try {
+            const url = new URL(originalHref);
+
+            if (url.hostname.includes('wa.me') || url.hostname.includes('api.whatsapp.com')) {
+                url.search = '';
+                link.setAttribute('href', url.toString());
+            }
+        } catch (error) {
+            const cleanHref = originalHref.split('?')[0];
+            link.setAttribute('href', cleanHref);
+        }
+    });
+
+    /* =====================================================
+       7. MAPA PLACEHOLDER CLICK
+       =====================================================
+       Abre o Google Maps ao clicar no placeholder do mapa.
+       EDITÁVEL: Altere o endereço na URL abaixo.
+    */
+
+
+
+/* =====================================================
+   FIM DO SCRIPT
+   =====================================================
+
+   DICAS PARA EDIÇÃO:
+
+   1. Para alterar o número do WhatsApp, edite no HTML
+      os links que contêm "wa.me/55..."
+
+   2. Para alterar a mensagem padrão do WhatsApp,
+      modifique a variável 'defaultMessage' na seção 6
+
+   3. Para alterar o endereço do mapa, modifique
+      a variável 'mapsUrl' na seção 7
+
+   4. Para adicionar mais animações, adicione
+      seletores na seção 5 (animateElements)
+
+   ===================================================== */
+
 });
